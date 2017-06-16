@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+	<!-- <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script> -->
+	<!-- <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script> -->
+</head>
+<body>
+	<div id="example">
+		<input-change></input-change>
+	</div>
+	<script type="text/javascript">
+		// key值默認相同 欲使其重新渲染 (input的value重置) 需要給予不同的key值
+		Vue.component('input-change', {
+		  template: 
+		  	`<div>
+		  		<div v-if="yes"><label>Email</label><input placeholder="email" key="1"/></div>
+		  		<div v-if="!yes"><label>Username</label><input placeholder="username" key="2"/></div>
+		  		<button @click="changeInput">toggleInput</button>
+		  	</div>`,
+		  	data(){
+		  		return {
+		  			message: 'hello',
+		  			yes:false,
+		  		}
+	  	  	},
+	  	  	methods:{
+	  	  		changeInput(){
+	  	  			this.yes = !this.yes
+	  	  		}
+	  	  	}
+		})
+		// 创建根实例
+		new Vue({
+		  el: '#example'
+		})
+	</script>
+</body>
+</html>

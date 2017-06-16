@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>computed</title>
+	<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+</head>
+<body>
+	<div id="example">
+	  <p>Original message: "{{ message }}"</p>
+	  <p>Computed reversed message: "{{ reversedMessage}}"，時間是{{now()}}</p>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+		  el: '#example',
+		  data: {
+		    message: 'Hello'
+		  },
+		  computed: {
+		    // a computed getter
+		    reversedMessage: function () {
+		      // `this` points to the vm instance
+		      return this.message.split('').reverse().join('')
+		    }
+		  },
+		  methods: {
+		    now(){
+		    	return Date.now();
+		    }
+		  }
+		})
+	</script>
+</body>
+</html>

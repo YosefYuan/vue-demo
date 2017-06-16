@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>computed vs watch</title>
+	<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+	<!-- <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script> -->
+	<!-- <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script> -->
+</head>
+<body>
+	<div id="demo">
+		<div v-bind:class="classObject">test-text</div>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#demo",
+			data:{
+				classObject:{
+					active:true,
+					'text-danger':false
+				}
+			}
+		})
+	</script>
+	<style type="text/css">
+		div{display: block;margin:0 auto;}
+		.active{background-color: #f00;}
+		.text-danger{color:#fff;}
+	</style>
+</body>
+</html>

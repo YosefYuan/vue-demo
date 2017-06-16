@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+	<!-- <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script> -->
+	<!-- <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script> -->
+</head>
+<body>
+
+	<div id="demo">
+		<my-component v-bind:class="{baz: isBaz,far: isFar}"></my-component>
+	</div>
+
+	<script type="text/javascript">
+		
+		Vue.component('my-component',{
+			template:'<p class="foo bar">Hi</p>'
+		})
+		var vm = new Vue({
+			el:'#demo',
+			data:{
+				isBaz:false,
+				isFar:true
+			}
+		})
+	</script>
+</body>
+</html>
