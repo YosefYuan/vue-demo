@@ -16,7 +16,7 @@
 		  template: 
 		  	`<div>
 		  		<div v-if="yes"><label>Email</label><input placeholder="email" key="1"/></div>
-		  		<div v-if="!yes"><label>Username</label><input placeholder="username" key="2"/></div>
+		  		<div v-else><label>Username</label><input placeholder="username" key="2"/></div>
 		  		<button @click="changeInput">toggleInput</button>
 		  	</div>`,
 		  	data(){

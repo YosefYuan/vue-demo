@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+	<!-- <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script> -->
+	<!-- <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script> -->
+</head>
+<body>
+	<div id="demo">
+		<input 
+			placeholder="Add a todo"
+			v-model="newTodo"
+			v-on:keyup.enter="addNewTodo"
+		>
+		<ul>
+			<li
+				is="todoTemplate"
+				v-for="(todo, index) in todos"
+				v-bind:title="todo"
+				v-on:remove="todos.splice(index,1)"
+			></li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		Vue.component('todoTemplate',{
+			template:
+			`
+				<li>
+					{{ title }}
+					<button @click="$emit('remove')">X</button>
+				</li>
+			`,
+			props:['title']
+		})
+		new Vue({
+			el:"#demo",
+			data:{
+				newTodo:'',
+				todos:[
+					"sth 1",
+					"sth 2",
+					"sth 3"
+				]
+			},
+			methods:{
+				addNewTodo () {
+					this.todos.push(this.newTodo)
+					this.newTodo = ''
+				}
+			}
+		})
+	</script>
+</body>
+</html>

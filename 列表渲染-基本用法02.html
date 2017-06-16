@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+	<!-- <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script> -->
+	<!-- <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script> -->
+</head>
+<body>
+<!-- index不能前不能加 "item" -->
+	<div id="demo">
+		<li-for></li-for>
+	</div>
+	<script type="text/javascript">
+		Vue.component('li-for',{
+			template:`
+			<div>
+				<ul v-for="item in items">
+					<li>{{item.msg}}</li>
+					<li class="divider"></li>
+				</ul>
+			</div>`,
+			data () {
+				return {
+					items:[
+						{msg:111},
+						{msg:222},
+						{msg:333}
+					]
+				}
+			}
+		})
+		var vm = new Vue({
+			el:"#demo"
+		})
+	</script>
+	<style type="text/css">
+		li{list-style: none;}
+		.divider{height: 0;border-top: 1px dotted #888;}
+	</style>
+</body>
+</html>
