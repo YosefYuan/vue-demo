@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+	<!-- <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script> -->
+	<!-- <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script> -->
+</head>
+<body>
+	<div id="demo">
+		<button @click.once="warn('test str',$event)">prevent default</button>
+	</div>
+	<script>
+		var vm = new Vue({
+			el:"#demo",
+			methods:{
+				warn:function(message,event) {
+					alert(message);
+					alert(event.target.nodeName);
+				}
+			}
+		})
+	</script>
+</body>
+</html>

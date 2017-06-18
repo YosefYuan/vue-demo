@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+	<!-- <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script> -->
+	<!-- <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script> -->
+</head>
+<body>
+	<div id="demo">
+		<button v-on:click="greet">Greet<span>1<span></button>
+	</div>
+	<script>
+		var vm = new Vue({
+			el:"#demo",
+			data:{
+				name: 'Vue.js'
+			},
+			methods:{
+				greet (event) {
+					alert('Hello ' + this.name  + '!');
+					alert(event.target.tagName);
+				}
+			}
+		})
+	</script>
+</body>
+</html>

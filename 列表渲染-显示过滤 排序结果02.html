@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+	<!-- <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script> -->
+	<!-- <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script> -->
+</head>
+<body>
+	<ul id="demo">
+		<li v-for="n in even(numbers)">{{ n }}</li>
+	</ul>
+	<script>
+		var vm = new Vue({
+			el:"#demo",
+			data:{
+				numbers:[1,2,3,4,5]
+			},
+			methods:{
+				even (num) {
+					return num.filter(function (number) {
+						return number % 2 === 0
+					})
+				}
+			}
+		})
+	</script>
+</body>
+</html>
