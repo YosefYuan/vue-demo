@@ -10,7 +10,7 @@
 <body>
     <div id="demo">
         <button @click="show=!show">Toggle</button>
-        <transition name="render">
+        <transition name="bounce">
             <p v-show='show'>Hello</p>
         </transition>
     </div>
@@ -23,15 +23,34 @@
         })
     </script>
     <style>
-        .render-enter-active, .render-leave{
-            opacity: 1;
+        #demo{margin-left: 200px;}
+        .bounce-enter-active {
+            animation: bounce-in .5s;
         }
-        .render-enter, .render-leave-active{
-            transform:translateX(10px);
-            opacity: 0;
+        .bounce-leave-active {
+            animation: bounce-out .5s;
         }
-        .render-enter-active, .render-leave-active{
-            transition: all .5s ease;
+        @keyframes bounce-in {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        @keyframes bounce-out {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(0);
+            }
         }
     </style>
 </body>
