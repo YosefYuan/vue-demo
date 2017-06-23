@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+	<!-- <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script> -->
+	<!-- <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script> -->
+</head>
+<body>
+    <div id="demo">
+        <currency-input></currency-input>
+    </div>
+    <script>
+        Vue.component('currency-input', {
+            template:`
+                <span>
+                    $
+                    <input
+                        ref="input01"
+                        v-bind:value="value"
+                        v-on:input="updateValue($event.target.value)"
+                    >
+                </span>
+            `,
+            props: ['value'],
+            methods: {
+                updateValue: function (value) {
+                    var formattedValue = value
+                        .trim()
+                        .slice(0, value.indexOf('.') + 3)
+                    if (formattedValue !== value) {
+                        this.$refs.input01.value = formattedValue
+                    }
+                    this.$emit('input')
+                }
+            }
+        })
+        new Vue({
+            el:"#demo"
+        })
+    </script>
+</body>
+</html>

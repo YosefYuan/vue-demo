@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <button @click="show=!show">Toggle</button>
+        <transition name="render">
+            <p v-show='show'>Hello</p>
+        </transition>
+    </div>
+    <script>
+        new Vue({
+            el:"#demo",
+            data:{
+                show:true
+            }
+        })
+    </script>
+    <style>
+        .render-enter-active, .render-leave{
+            opacity: 1;
+        }
+        .render-enter, .render-leave-active{
+            transform:translateX(10px);
+            opacity: 0;
+        }
+        .render-enter-active, .render-leave-active{
+            transition: all .5s ease;
+        }
+    </style>
+</body>
+</html>

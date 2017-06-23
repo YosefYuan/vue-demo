@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="./vue.js"></script>
+	<!-- <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script> -->
+	<!-- <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script> -->
+</head>
+<body>
+    <div id="demo">
+        <component01></component01>
+        <component02></component02>
+    </div>
+    <div id="demo2">
+        <component01></component01>
+        <component02></component02>
+    </div>
+    <script>
+        var bus = new Vue();
+
+        Vue.component('component01',{
+            template:`
+                <button>{{ name }}</button>
+            `,
+            methods:{
+                func (val) {
+                    bus.$on('test',(val)=>{alert(2)})
+                }
+            },
+            data(){
+                return {
+                    name:'btn1'
+                }
+            },
+            beforeMount(){//mounted函數亦可 參見vue生命周期图示
+                var _this = this;
+                bus.$on('test', function (val) {
+                    _this.name=val;
+                });
+            }
+        });
+
+        Vue.component('component02',{
+            template:`
+                <button v-on:click="funcEmit">btn2</button>
+            `,
+            methods:{
+                funcEmit () {
+                    bus.$emit('test',"from btn2")
+                    alert(1)
+                }
+            }
+        });
+
+        new Vue({
+            el:"#demo"
+        });
+        new Vue({
+            el:"#demo2"
+        })
+    </script>
+</body>
+</html>

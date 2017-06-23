@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+	<!-- <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script> -->
+	<!-- <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script> -->
+</head>
+<body>
+    <div id="demo">
+        <p>{{ total }}</p>
+        <btn-increment v-on:increment="incrementTotal"></btn-increment>
+        <btn-increment v-on:increment="incrementTotal"></btn-increment>
+    </div>
+    <script>
+        Vue.component('btn-increment',{
+            template:`<button v-on:click="incrementFunc">{{ counter }}</button>`,
+            data () {
+                return {
+                    counter:0
+                }
+            },
+            methods: {
+                incrementFunc () {
+                    this.counter += 1
+                    this.$emit('increment')
+                }
+            }
+        })
+        new Vue({
+            el:"#demo",
+            data:{
+                total:0
+            },
+            methods:{
+                incrementTotal () {
+                    this.total += 1
+                }
+            }
+        })
+    </script>
+</body>
+</html>
