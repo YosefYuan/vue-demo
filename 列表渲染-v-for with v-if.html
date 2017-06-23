@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+	<!-- <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script> -->
+	<!-- <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script> -->
+</head>
+<body>
+	<div id="demo">
+		<li v-for="todo in todos" v-if="!todo.isComplete">
+			{{ todo.msg }}
+		</li>
+		<button @click="changeTodos">changeTodos</button>
+		<button @click="reduceTodos">reduceTodos</button>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#demo',
+			data:{
+				todos:[
+					{
+						msg:'sth 1',
+						isComplete:false
+					},
+					{
+						msg:'sth 2',
+						isComplete:true
+					},
+					{
+						msg:'sth 3',
+						isComplete:false
+					}
+				]
+			},
+			methods:{
+				changeTodos(){
+					Vue.set(this.todos,1,{
+						msg:'sth 4',
+						isComplete:false
+					})
+				},
+				reduceTodos(){
+					this.todos.splice(this.todos.length-1)
+				}
+			}
+		})
+	</script>
+</body>
+</html>
