@@ -16,13 +16,13 @@
             template: '<div>{{ $route.params.id }}</div>',
             watch: {
                 '$route' (to,from) {
-                    console.log(to.path);
+                    console.dir(to.matched.some(m =>m.meta.scrollToTop));
                 }
             }
         }
         const router = new VueRouter({
             routes:[
-                {path:'/user/:id',component:User},
+                {path:'/user/:id',component:User,meta: { scrollToTop: true }},
                 {path:'/',redirect:'/user/yosef'}
             ]
         })

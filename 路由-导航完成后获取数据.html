@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script type="text/javascript" src="./vue.js"></script>
+    <script src="./vue-router.js"></script>
+
+</head>
+
+<body>
+    <template>
+        <div class="post">
+            <div class="loading" v-if="loading">
+                Loading...
+            </div>
+            <div class="error" v-if="error">
+                {{ error }}
+            </div>
+            <div class="post" v-if="content">
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.body }}</p>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        export default {
+            data() {
+                return {
+                    loading: false,
+                    post: null,
+                    error: null
+                }
+            },
+            created() {
+                this.fetchData()
+            },
+            watch: {
+                '$route': 'fetchData'
+            },
+            methods: {
+                fetchData() {
+                    this.error = this.post = null
+                    this.loading = true
+
+                    getPost(this.$route.param.id, (err, post) => {
+                        this.loading = false
+                        if (err) {
+                            this.error = err.toString()
+                        } else {
+                            this.post = post
+                        }
+                    })
+                }
+            }
+        }
+    </script>
+</body>
+</html>
